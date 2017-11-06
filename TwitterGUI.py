@@ -1,17 +1,22 @@
 import forecastio
 from tkinter import *
 from PIL import Image, ImageTk
+import sqlite3
+import time
+import datetime
 
-api_key = "dca7849ad2985d67e63bdce010c191ee"
-# Utrecht
-latitude = 52.0884851
-longitude = 5.1180588
+def weersvoorspelling():
+    '''Returns weather forecast using the Darsky API'''
+    api_key = "dca7849ad2985d67e63bdce010c191ee"
+    # Utrecht
+    latitude = 52.0884851
+    longitude = 5.1180588
+    forecast = forecastio.load_forecast(api_key, latitude, longitude)
+    byHour = forecast.daily()
+    weerZin = byHour.summary
+    return weerZin
 
-forecast = forecastio.load_forecast(api_key, latitude, longitude)
-byHour = forecast.daily()
-weerZin = byHour.summary
-weerWoord = byHour.icon
-
+# Tkinter Window
 class Window(Frame):
 
     def __init__(self, master=None):
@@ -36,12 +41,26 @@ class Window(Frame):
         intro.pack()
 
         # Huidige weersomstandigheden
-        tekst = Label(self, text="Huidige weersomstandigheden in Utrecht:\n " + weerZin)
+        tekst = Label(self, text="Huidige weersomstandigheden in Utrecht:\n " + weersvoorspelling())
         tekst.pack()
 
-        # Huidige weersomstandigheden - 1 woord
-        tekst = Label(self, text=weerWoord)
-        tekst.pack()
+        # Show Tweets
+        tweets = Label(self, text="Tweets")
+        tweets.pack()
+
+        '''self.connection = sqlite3.connect('tweets.db')
+        self.cur = self.connection.cursor()
+        self.showallrecords()
+
+    def showallrecords(self):
+        data = self.readfromdatabase()
+        for index, dat in enumerate(data):
+            Label(self.master, text=dat[0]).grid(row=index+1, column=0)
+            Label(self.master, text=dat[1]).grid(row=index+1, column=1)
+
+        def readfromdatabase(self):
+        self.cur.execute("SELECT * FROM tweets")
+        return self.cur.fetchall()'''
 
 
 root = Tk() #Creates root window
@@ -54,6 +73,10 @@ root.mainloop() # Start mainloop to show it
 """"
 Bronnen:
 https://pypi.python.org/pypi/python-forecastio/
+http://tweepy.readthedocs.io/en/v3.5.0/api.html
 https://pythonprogramming.net/python-3-tkinter-basics-tutorial/
 https://pythonprogramming.net/tkinter-python-3-tutorial-adding-buttons/?completed=/python-3-tkinter-basics-tutorial/
+https://pythonprogramming.net/tkinter-adding-text-images/
+https://pythonprogramming.net/twitter-api-streaming-tweets-python-tutorial/?completed=/mysql-live-database-example-streaming-data/
+https://stackoverflow.com/questions/36590476/taking-data-from-a-database-and-putting-into-a-table-in-a-gui
 """
