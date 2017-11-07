@@ -16,14 +16,17 @@ class Twitter():
 
 
     def updateTwitter(self, text):
+        '''Stuurt via de parameter text een statusupdate op twitter'''
         self.api.update_status(text)
 
 
     def getTweets(self):
+        '''Haalt alle tweets op en geeft een lijst van alle tweets die binnen 2 uur gestuurd zijn'''
         new_tweets = self.api.user_timeline(page_limit = 20)
         print(new_tweets)
         listTexts = []
         timezone = 3600
+        #TODO: timeTweet naar 2 uur veranderen
         timeTweet = 300
         totalCOmpareTime = timezone + timeTweet
         for tweet in new_tweets:
