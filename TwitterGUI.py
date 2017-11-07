@@ -27,7 +27,7 @@ class Window(Frame):
     def init_window(self):
         '''Creation of init_window'''
         self.master.title("NS - Twitter & Weer") #Titel of the master widget
-        #self.pack(fill=BOTH, expand=1)  # Allow full space of root
+        self.pack(fill=BOTH, expand=1)  # Allow full space of root
 
         # NS Logo
         load = Image.open("ns_logo.png")
@@ -38,15 +38,16 @@ class Window(Frame):
 
         # Intro tekst
         intro = Label(self, text="Welkom bij de NS Twitter Zuil. \n")
-        intro.grid(row=0)
+        intro.pack()
 
         # Huidige weersomstandigheden
         tekst = Label(self, text="Huidige weersomstandigheden in Utrecht:\n " + weersvoorspelling())
         tekst.pack()
 
         # Show Tweets
-        tweets = Label(self, text="Tweets")
-        tweets.pack()
+        self.label = Label(self, text='Meest recente tweets:', height=2, padx=15, font=("Helvetica", 16), fg="white")
+        self.label.configure(background='DeepSkyBlue2')
+        self.label.pack()
 
 
 root = Tk() #Creates root window
