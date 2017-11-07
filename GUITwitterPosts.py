@@ -29,14 +29,19 @@ class GUI(Frame):
                                    font=("Helvetica", 14), fg="white")
                 self.label.configure(background='DeepSkyBlue2')
                 self.label.pack()
-        else:
-            print("lijst is leeg1")
+
 
 
 
 
 root = Tk()
-
+root.title("Twitter Overzicht")
+root.geometry("450x400")
+root.configure(background='DeepSkyBlue2')
+image = Image.open('twitterIMG.jpg')
+photo = ImageTk.PhotoImage(image)
+label = tk.Label(root, image = photo)
+label.pack(anchor = S)
 
 app = GUI(root)
 
