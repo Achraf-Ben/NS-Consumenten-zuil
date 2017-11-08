@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 import sqlite3
 import time
 import datetime
-from testjes import twitterAPI
+import twitterAPI
 
 def weersvoorspelling():
     '''Returns weather forecast using the Darsky API'''
