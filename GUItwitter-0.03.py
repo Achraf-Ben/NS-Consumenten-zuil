@@ -11,8 +11,8 @@ def weersvoorspelling():
     '''Returns weather forecast using the Darsky API'''
     api_key = "dca7849ad2985d67e63bdce010c191ee"
     # Utrecht
-    latitude = 52.0884851
-    longitude = 5.1180588
+    latitude = 52.089473
+    longitude = 5.109183
     forecast = forecastio.load_forecast(api_key, latitude, longitude)
     byHour = forecast.daily()
     weerZin = byHour.summary
