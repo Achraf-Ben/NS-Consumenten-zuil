@@ -12,10 +12,14 @@ def weersvoorspelling():
     # Utrecht
     latitude = 52.0884851
     longitude = 5.1180588
-    forecast = forecastio.load_forecast(api_key, latitude, longitude)
-    byHour = forecast.daily()
-    weerZin = byHour.summary
-    return weerZin
+    try:
+        forecast = forecastio.load_forecast(api_key, latitude, longitude)
+        byHour = forecast.daily()
+        weerZin = byHour.summary
+        return weerZin
+    except:
+        APIerror = "Cant connect to the DarkSky API please try again"
+        return APIerror
 
 # Tkinter Window
 class Window(Frame):
