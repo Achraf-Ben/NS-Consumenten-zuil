@@ -48,9 +48,8 @@ class Window(Frame):
         self.showText()
 
     def accept(self):
-        import sqlite3
         try:
-            # eerst een connectie porberen te maken met de database
+            # eerst een connectie proberen te maken met de database
             conn = sqlite3.connect("Database.db")
             c = conn.cursor()
             try:
