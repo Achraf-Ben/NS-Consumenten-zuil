@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 import sqlite3
 import time
 import datetime
-import twitterAPI
+from testjes import twitterAPI
 
 def weersvoorspelling():
     '''Returns weather forecast using the Darsky API'''
@@ -39,7 +39,7 @@ class Window(Frame):
         img.place(x=0, y=0)
 
         # Intro tekst
-        intro = Label(self, text="Welkom bij de NS Twitter Zuil. \n", bg="DeepSkyBlue2", height=2, padx=15, font=("Helvetica", 16), fg="white")
+        intro = Label(self, text="Welkom bij de NS Twitter Zuil. \n", bg="DeepSkyBlue2", height=2, padx=15, pady = 14, font=("Helvetica", 16), fg="white")
         intro.pack()
 
         # Show Tweets
@@ -63,7 +63,7 @@ class Window(Frame):
 
 
 root = Tk() #Creates root window
-root.geometry("1366x768") # Window size
+root.geometry("1200x600") # Window size
 root.configure(background='DeepSkyBlue2')
 app = Window(root) #Create the instance
 root.mainloop() # Start mainloop to show it
