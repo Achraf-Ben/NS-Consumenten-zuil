@@ -11,12 +11,16 @@ def weersvoorspelling():
     '''Returns weather forecast using the Darsky API'''
     api_key = "dca7849ad2985d67e63bdce010c191ee"
     # Utrecht
-    latitude = 52.089473
-    longitude = 5.109183
-    forecast = forecastio.load_forecast(api_key, latitude, longitude)
-    byHour = forecast.daily()
-    weerZin = byHour.summary
-    return weerZin
+    latitude = 52.0884851
+    longitude = 5.1180588
+    try:
+        forecast = forecastio.load_forecast(api_key, latitude, longitude)
+        byHour = forecast.daily()
+        weerZin = byHour.summary
+        return weerZin
+    except:
+        APIerror = "Cant connect to the DarkSky API please try again"
+        return APIerror
 
 # Tkinter Window
 class Window(Frame):
@@ -56,6 +60,8 @@ class Window(Frame):
                                    font=("Helvetica", 14), fg="white")
                 self.label.configure(background='DeepSkyBlue2')
                 self.label.pack()
+
+
         else:
             # Huidige weersomstandigheden
             self.labelIntro = Label(self, text='"Huidige weersomstandigheden in Utrecht:', height=2, padx=15, font=("Helvetica", 16),
@@ -77,7 +83,6 @@ class Window(Frame):
             listText = self.twitterAPI_class.getTweets()
             if listText != []:
                 self.labelIntro['text'] = 'Meest recente tweets:'
-
                 for text in listText:
                     self.label['text'] = text
             else:
@@ -86,7 +91,7 @@ class Window(Frame):
                 self.label['text'] = weersvoorspelling()
                 self.label.pack()
 
-            time.sleep(3700)
+            time.sleep(5)
 
 root = Tk() #Creates root window
 root.geometry("1200x600") # Window size
