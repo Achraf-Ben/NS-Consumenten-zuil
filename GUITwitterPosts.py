@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter as tk
 from PIL import Image, ImageTk
 #todo: change from..
-from testjes import twitterAPI
+import twitterAPI
 
 class GUI(Frame):
     twitterAPI_class = twitterAPI.Twitter()
