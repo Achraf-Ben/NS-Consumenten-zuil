@@ -22,20 +22,22 @@ class Twitter():
 
     def getTweets(self):
         '''Haalt alle tweets op en geeft een lijst van alle tweets die binnen 2 uur gestuurd zijn'''
-        new_tweets = self.api.user_timeline(page_limit = 20)
-        print(new_tweets)
-        listTexts = []
-        timezone = 3600
-        #TODO: timeTweet naar 2 uur veranderen
-        timeTweet = 300
-        totalCOmpareTime = timezone + timeTweet
-        for tweet in new_tweets:
-            print(tweet.created_at)
-            if (datetime.datetime.now() - tweet.created_at).total_seconds() < totalCOmpareTime:
-                text = tweet.text
-                date = tweet.created_at
-                listTexts.append(text)
-                print(text, date)
-        return listTexts
-
-
+        try:
+            new_tweets = self.api.user_timeline(page_limit = 20)
+            print(new_tweets)
+            listTexts = []
+            timezone = 3600
+            #TODO: timeTweet naar 2 uur veranderen
+            timeTweet = 300
+            totalCOmpareTime = timezone + timeTweet
+            for tweet in new_tweets:
+                print(tweet.created_at)
+                if (datetime.datetime.now() - tweet.created_at).total_seconds() < totalCOmpareTime:
+                    text = tweet.text
+                    date = tweet.created_at
+                    listTexts.append(text)
+                    print(text, date)
+            return listTexts
+        except:
+            error = []
+            return error
