@@ -4,7 +4,8 @@ from PIL import Image, ImageTk
 import sqlite3
 import time
 import datetime
-import twitterAPI
+from testjes import twitterAPI
+import threading
 
 def weersvoorspelling():
     '''Returns weather forecast using the Darsky API'''
@@ -12,14 +13,10 @@ def weersvoorspelling():
     # Utrecht
     latitude = 52.0884851
     longitude = 5.1180588
-    try:
-        forecast = forecastio.load_forecast(api_key, latitude, longitude)
-        byHour = forecast.daily()
-        weerZin = byHour.summary
-        return weerZin
-    except:
-        APIerror = "Cant connect to the DarkSky API please try again"
-        return APIerror
+    forecast = forecastio.load_forecast(api_key, latitude, longitude)
+    byHour = forecast.daily()
+    weerZin = byHour.summary
+    return weerZin
 
 # Tkinter Window
 class Window(Frame):
@@ -49,10 +46,10 @@ class Window(Frame):
         # Show Tweets
         listText = self.twitterAPI_class.getTweets()
         if listText != []:
-            self.label = Label(self, text='Meest recente tweets:', height=2, padx=15, font=("Helvetica", 16),
+            self.labelIntro = Label(self, text='Meest recente tweets:', height=2, padx=15, font=("Helvetica", 16),
                                fg="white")
-            self.label.configure(background='DeepSkyBlue2')
-            self.label.pack()
+            self.labelIntro.configure(background='DeepSkyBlue2')
+            self.labelIntro.pack()
 
             for text in listText:
                 self.label = Label(self, text=text, height=2, padx=15,
@@ -61,10 +58,35 @@ class Window(Frame):
                 self.label.pack()
         else:
             # Huidige weersomstandigheden
-            tekst = Label(self, text="Huidige weersomstandigheden in Utrecht:\n " + weersvoorspelling(),
-                          bg="DeepSkyBlue2", height=2, padx=15, font=("Helvetica", 16), fg="white")
-            tekst.pack()
+            self.labelIntro = Label(self, text='"Huidige weersomstandigheden in Utrecht:', height=2, padx=15, font=("Helvetica", 16),
+                                    fg="white")
+            self.labelIntro.configure(background='DeepSkyBlue2')
+            self.labelIntro.pack()
 
+            self.label = Label(self, text= weersvoorspelling(),
+                          bg="DeepSkyBlue2", height=2, padx=15, font=("Helvetica", 16), fg="white")
+            self.label.pack()
+
+        threadUpdateTime = threading.Thread(target=self.reloadTweets)
+        threadUpdateTime.start()
+
+    def reloadTweets(self):
+        while True:
+            print("threaadd")
+
+            listText = self.twitterAPI_class.getTweets()
+            if listText != []:
+                self.labelIntro['text'] = 'Meest recente tweets:'
+
+                for text in listText:
+                    self.label['text'] = text
+            else:
+                # Huidige weersomstandigheden
+                self.labelIntro['text'] = "Huidige weersomstandigheden in Utrecht:"
+                self.label['text'] = weersvoorspelling()
+                self.label.pack()
+
+            time.sleep(3700)
 
 root = Tk() #Creates root window
 root.geometry("1200x600") # Window size
