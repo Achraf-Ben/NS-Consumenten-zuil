@@ -77,8 +77,8 @@ class Window(Frame):  # Creates window
                     databaseError = 'Kan geen verbinding maken met de Database. Probeer het later nog eens.'
                 else:
                     databaseError = 'Unable to connect to Database. Please try again later.'
-                return databaseError
-
+                print(databaseError)
+                self.foutmelding ['text'] = databaseError
 
 
     def translateDutch(self):
@@ -100,5 +100,4 @@ root.configure(background = '#FFC917')
 
 app = Window(root)
 
-root.mainloop()
 root.mainloop()
