@@ -31,17 +31,24 @@ class Window(Frame):  # Creates window
     def sendTweet(self):
         'Sends tweet from GUI to Database'
         text = self.inputConsument.get()
-        if len(text) > 140:
+        if len(text) <=0:
+            print('foutmelding!')
+            foutmelding = Label(self.master, text='Het bericht mag niet leeg zijn. Probeer opnieuw.', background = '#FFC917', font = ('Helvetica', 16))
+            foutmelding.grid(row=3, column=0, sticky = W)
+        elif len(text) > 140:
             print('foutmelding!')
             foutmelding = Label(self.master, text='Tweets kunnen maximaal 140 karakters bevatten. Probeer opnieuw.', background = '#FFC917', font = ('Helvetica', 16))
             foutmelding.grid(row=3, column=0, sticky = W)
-
         else:
             conn = sqlite3.connect("Database.db")
             c = conn.cursor()
-            c.execute('INSERT INTO tweets(tweet, status) VALUES("Dit is een tweet", "toBeProcessed")')
+            c.execute('INSERT INTO tweets(tweet, status) VALUES(?, "toBeProcessed")', (text,))
             conn.commit()
             conn.close()
+            melding = Label(self.master, text='Het bericht is verstuurd!',
+                                background='#FFC917', font=('Helvetica', 16))
+            melding.grid(row=3, column=0, sticky=W)
+            self.inputConsument.delete(0, 'end')
 
 root = Tk()
 root.configure(background = '#FFC917')
