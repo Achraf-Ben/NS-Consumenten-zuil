@@ -7,8 +7,9 @@ import datetime
 from testjes import twitterAPI
 import threading
 
+
 def weersvoorspelling():
-    '''Returns weather forecast using the Darsky API'''
+    '''Return weather forecast using the Darsky API.'''
     api_key = "dca7849ad2985d67e63bdce010c191ee"
     # Utrecht
     latitude = 52.0884851
@@ -19,8 +20,9 @@ def weersvoorspelling():
         weerZin = byHour.summary
         return weerZin
     except:
-        APIerror = "Cant connect to the DarkSky API please try again"
+        APIerror = "Can't connect to the DarkSky API, please try again."
         return APIerror
+    
 
 # Tkinter Window
 class Window(Frame):
@@ -29,10 +31,11 @@ class Window(Frame):
         Frame.__init__(self, master)
         self.master = master
         self.init_window()
+        
 
     def init_window(self):
-        '''Creation of init_window'''
-        self.master.title("NS - Twitter & Weer") #Titel of the master widget
+        '''Create init_window.'''
+        self.master.title("NS Consumenten zuil - Twitter & Weer") # Title of the master widget
         self.pack(fill=BOTH, expand=1)  # Allow full space of root
         self.configure(background="DeepSkyBlue2")
 
@@ -48,23 +51,20 @@ class Window(Frame):
         intro.pack()
 
         # Show Tweets
-
-        self.labelIntro = Label(self, text=' ', height=2, padx=15, font=("Helvetica", 18),
-                                fg="white")
+        self.labelIntro = Label(self, text=' ', height=2, padx=15, font=("Helvetica", 18), fg="white")
         self.labelIntro.configure(background='DeepSkyBlue2')
         self.labelIntro.pack()
 
-        self.label = Label(self, text=" ", padx=15,
-                           font=("Helvetica", 14), fg="white", wraplength=1000)
+        self.label = Label(self, text=" ", padx=15, font=("Helvetica", 14), fg="white", wraplength=1000)
         self.label.configure(background='DeepSkyBlue2' )
         self.label.pack(fill=BOTH)
 
         threadUpdateTime = threading.Thread(target=self.reloadTweets)
         threadUpdateTime.start()
+        
 
     def reloadTweets(self):
         while True:
-            print("threaadd")
             listText = self.twitterAPI_class.getTweets()
             if listText != []:
                 self.labelIntro['text'] = 'Meest recente tweets:'
@@ -79,24 +79,10 @@ class Window(Frame):
                 self.label.pack()
 
             time.sleep(5)
+            
 
-root = Tk() #Creates root window
+root = Tk() # Create root window
 root.geometry("1200x600") # Window size
 root.configure(background='DeepSkyBlue2')
-app = Window(root) #Create the instance
-root.mainloop() # Start mainloop to show it
-
-# NS Kleur geel = #FFC917
-
-
-
-""""
-Bronnen:
-https://pypi.python.org/pypi/python-forecastio/
-http://tweepy.readthedocs.io/en/v3.5.0/api.html
-https://pythonprogramming.net/python-3-tkinter-basics-tutorial/
-https://pythonprogramming.net/tkinter-python-3-tutorial-adding-buttons/?completed=/python-3-tkinter-basics-tutorial/
-https://pythonprogramming.net/tkinter-adding-text-images/
-https://pythonprogramming.net/twitter-api-streaming-tweets-python-tutorial/?completed=/mysql-live-database-example-streaming-data/
-https://stackoverflow.com/questions/36590476/taking-data-from-a-database-and-putting-into-a-table-in-a-gui
-"""
+app = Window(root) # Create the instance
+root.mainloop() # Start mainloop
