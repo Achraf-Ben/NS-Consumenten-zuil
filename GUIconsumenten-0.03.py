@@ -7,7 +7,7 @@ class Window(Frame):  #Create window
     def __init__(self, master=None):  #Main window
         '''Create main application window for GUIconsumenten.'''
         Frame.__init__(self, master)
-        self.master.title('NS-Consumenten zuil')
+        self.master.title('NS Consumenten zuil - Tweet it')
         self.translateMessageEnglish = False
 
         #Below: GUIconsumenten Layout
