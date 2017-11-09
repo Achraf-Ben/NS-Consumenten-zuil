@@ -99,7 +99,5 @@ class Window(Frame):  #Create window
 
 root = Tk()
 root.configure(background = '#FFC917')
-
 app = Window(root)
-
 root.mainloop()
