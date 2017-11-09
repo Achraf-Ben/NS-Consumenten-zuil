@@ -24,7 +24,6 @@ De volgende Python modules zijn gebruikt bij het bouwen van de applicatie:
 Python3.6.1
 Tweepy 3.5.0
 Forecastio 1.3.5
-Pillow 4.3.0
 Pillow-Pil 0.1.dev0
 ```
 
@@ -35,7 +34,7 @@ Voor het starten van de applicatie moet het volgende worden uitgevoerd:
 ```
 git clone https://www.github.com/Achraf-Ben/NS-Consumenten-zuil
 pip3 install tweepy
-pip3 install Pillow
+pip3 install Pillow-Pil
 pip3 install python-forecastio
 ```
 
