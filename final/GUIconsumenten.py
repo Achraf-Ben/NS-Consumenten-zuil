@@ -48,7 +48,10 @@ class Window(Frame):  #Create window
 
         Check inputConsument for blank entry and entry with more than 140 characters.
         If neither is true: send inputConsument from GUIconsumenten to Database and
-        clear inputConsument.'''
+        clear inputConsument.
+        >>> len(text) <= 140
+        True
+        '''
         text = self.inputConsument.get()
         if len(text) <=0 and self.translateMessageEnglish == False:
             self.foutmelding ['text'] = 'Het bericht mag niet leeg zijn. Probeer opnieuw.'
@@ -101,3 +104,7 @@ root = Tk()
 root.configure(background = '#FFC917')
 app = Window(root)
 root.mainloop()
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
