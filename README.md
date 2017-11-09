@@ -42,10 +42,11 @@ pip3 install python-forecastio
 Hierna kunnen de python bestanden gedraaid worden in Python 3. 
 
 ```
-cd NS-Consumenten-zuil 
-python3 GUIadmin-0.04.py
-python3 GUIconsumenten-0.03.py
-python3 GUItwitter-0.06.py
+cd NS-Consumenten-zuil
+cd final
+python3 GUIadmin.py
+python3 GUIconsumenten.py
+python3 GUItwitter.py
 ```
 
 Na het starten van de 3 GUI's is het mogelijk om in GUIconsumenten een (Twitter) bericht in te voeren. 
@@ -65,11 +66,11 @@ Houdt er rekening mee dat alle hierboven genoemde dependencies geïnstalleerd zi
 
 ## Authors
 
-* **Achraf ben Abdelkrim** - *Initial work* - [HU](https://github.com/Achraf-Ben)
-* **Vera Schoonderwoerd** - *Initial work* - [HU](https://github.com/vera98x)
-* **Job Nuhaan** - *Initial work* - [HU](https://github.com/jnuhaan)
-* **Joël van de Rest** - *Initial work* - [HU](https://github.com/JoelvandeRest)
-* **IJsbrand Sijtsema** - *Initial work* - [HU](https://github.com/IcefireSijtsema) 
+* **Achraf ben Abdelkrim** - *Initial work* - [Github](https://github.com/Achraf-Ben)
+* **Vera Schoonderwoerd** - *Initial work* - [Github](https://github.com/vera98x)
+* **Job Nuhaan** - *Initial work* - [Github](https://github.com/jnuhaan)
+* **Joël van de Rest** - *Initial work* - [Github](https://github.com/JoelvandeRest)
+* **IJsbrand Sijtsema** - *Initial work* - [Github](https://github.com/IcefireSijtsema)
 
 ## License
 
