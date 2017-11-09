@@ -16,28 +16,35 @@ class Twitter():
 
 
     def updateTwitter(self, text):
-        '''Stuurt via de parameter text een statusupdate op twitter'''
+        '''send de tweet met de bijbehorende tekst'''
         self.api.update_status(text)
 
 
     def getTweets(self):
-        '''Haalt alle tweets op en geeft een lijst van alle tweets die binnen 2 uur gestuurd zijn'''
-        try:
-            new_tweets = self.api.user_timeline(page_limit = 20)
-            print(new_tweets)
-            listTexts = []
-            timezone = 3600
-            #TODO: timeTweet naar 2 uur veranderen
-            timeTweet = 300
-            totalCOmpareTime = timezone + timeTweet
-            for tweet in new_tweets:
-                print(tweet.created_at)
-                if (datetime.datetime.now() - tweet.created_at).total_seconds() < totalCOmpareTime:
-                    text = tweet.text
-                    date = tweet.created_at
-                    listTexts.append(text)
-                    print(text, date)
-            return listTexts
-        except:
-            error = []
-            return error
+        '''haalt de tweets op die binnen 2 uur zijn gepost en stuurt een lijst van de tweets terug'''
+        new_tweets = self.api.user_timeline(page_limit = 20)
+        print(new_tweets)
+        listTexts = []
+        #houd rekening met de tijdzone
+        timezone = 3600
+        # tweets die binnen 2 uur gepost zijn mogen worden opgenomen in de lijst
+        timeTweet = 7200
+        totalCOmpareTime = timezone + timeTweet
+
+        numCount = 0
+        for tweet in new_tweets:
+            print(tweet.created_at)
+            if (datetime.datetime.now() - tweet.created_at).total_seconds() < totalCOmpareTime:
+                numCount = numCount + 1
+                text = tweet.text
+                date = tweet.created_at
+                listTexts.append(text)
+                print(text, date)
+                if numCount >= 4:
+                    break
+            else:
+                # de tweets zijn op volgorde van datum, dus de rest van de tweets zijn ouder en hoeven ook niet bekeken te worden
+                break
+        return listTexts
+
+
