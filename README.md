@@ -14,7 +14,7 @@ gelezen voordat ze worden gepost op Twitter en zichtbaar worden in de stationsha
 
 ## Getting Started
 
-Hieronder vind je de instructies voor het downloaden en draaien van de applicatie. 
+Hieronder zijn de instructies te vinden voor het downloaden en draaien van de applicatie. 
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ Pillow-Pil 0.1.dev0
 
 ### Installatie
 
-Voor het starten van de applicatie moet het volgende worden uitgevoegd:
+Voor het starten van de applicatie moet het volgende worden uitgevoerd:
 
 ```
 git clone https://www.github.com/Achraf-Ben/NS-Consumenten-zuil
@@ -39,7 +39,7 @@ pip3 install Pillow
 pip3 install python-forecastio
 ```
 
-Hierna kan je de python bestanden draaien in Python 3. 
+Hierna kunnen de python bestanden gedraaid worden in Python 3. 
 
 ```
 cd NS-Consumenten-zuil 
@@ -48,14 +48,14 @@ python3 GUIconsumenten-0.03.py
 python3 GUItwitter-0.06.py
 ```
 
-Na het starten van de 3 GUI's is het mogelijk om in GUIconsumenten een twitter bericht in te voeren. 
-Deze word vervolgens getoond in de GUIadmin en kan er beslist worden of deze word gepusht naar Twitter. 
-GUItwitter toont in eerste instantie het weerbericht en als er Tweets zijn verstuurd word het weerbericht vervangen door de Tweets. 
+Na het starten van de 3 GUI's is het mogelijk om in GUIconsumenten een (Twitter) bericht in te voeren. 
+Deze wordt vervolgens getoond in de GUIadmin. Hier kan de administrator beslissen of deze gepushed word naar Twitter of niet.
+GUItwitter toont in eerste instantie het weerbericht en als er Tweets zijn verstuurd word het weerbericht vervangen door de meest recente Tweets. 
 
 
 ## Deployment
 
-Houd er rekening mee dat alle hierboven genoemde dependencies geinstalleerd zijn voor de applicatie word gestart.
+Houdt er rekening mee dat alle hierboven genoemde dependencies geïnstalleerd zijn voor de applicatie word gestart.
 
 ## Built With
 
