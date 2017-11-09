@@ -88,6 +88,7 @@ class Window(Frame):
             if self.dict_tweetInfo != {}:
                 self.showText()
             else:
+                self.textLabel['text'] = "Er zijn geen tweets die nog beoordeeld moeten worden"
                 self.acceptButton['state'] = DISABLED
                 self.rejectButton['state'] = DISABLED
         except:
