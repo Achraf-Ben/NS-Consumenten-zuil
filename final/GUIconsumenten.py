@@ -45,12 +45,28 @@ class Window(Frame):  #Create window
 
     def sendTweet(self):
         '''Check inputConsument and send inputConsument from GUIconsumenten to Database.
-
         Check inputConsument for blank entry and entry with more than 140 characters.
         If neither is true: send inputConsument from GUIconsumenten to Database and
         clear inputConsument.
-        >>> len(text) <= 140
+        >>> len("Dit is een string kleiner dan 140 chars") <= 140
         True
+
+        >>> len("Dit is een string die boven het limit van dan 140 chars uitkomt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!") >= 140
+        True
+
+        >>> len(8) >= 140
+        Traceback (most recent call last):
+        TypeError: object of type 'int' has no len()
+
+        >>> len([5,6,"u"]) <= 140
+        True
+
+        >>> len(("kufo", "prog")) <= 140
+        True
+
+        >>> len({kufo, "prog"}) <= 140
+        Traceback (most recent call last):
+        NameError: name 'kufo' is not defined
         '''
         text = self.inputConsument.get()
         if len(text) <=0 and self.translateMessageEnglish == False:
