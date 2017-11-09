@@ -14,7 +14,7 @@ class Window(Frame):
 
     def init_window(self):
         '''Initialize the layout of the GUI and calls read() and adjust texts.'''
-        self.master.title('NS Consumenten zuil - Admin GUI') #Gives a title to the window
+        self.master.title('NS Consumenten zuil - Admin') #Gives a title to the window
         self.pack(fill=BOTH, expand = 1)
         self.configure(bg = 'DeepSkyBlue2') #Changes the background colour
 
