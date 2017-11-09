@@ -48,18 +48,30 @@ class Window(Frame):
         intro.pack()
 
         # Show Tweets
-        listText = self.twitterAPI_class.getTweets()
+
+        self.labelIntro = Label(self, text=' ', height=2, padx=15, font=("Helvetica", 18),
+                                fg="white")
+        self.labelIntro.configure(background='DeepSkyBlue2')
+        self.labelIntro.pack()
+
+        self.label = Label(self, text=" ", padx=15,
+                           font=("Helvetica", 14), fg="white", wraplength=1000)
+        self.label.configure(background='DeepSkyBlue2' )
+        self.label.pack(fill=BOTH)
+
+
+
+        '''listText = self.twitterAPI_class.getTweets()
         if listText != []:
             self.labelIntro = Label(self, text='Meest recente tweets:', height=2, padx=15, font=("Helvetica", 16),
                                fg="white")
             self.labelIntro.configure(background='DeepSkyBlue2')
             self.labelIntro.pack()
 
-            for text in listText:
-                self.label = Label(self, text=text, height=2, padx=15,
+            self.label = Label(self, text=" ", height=2, padx=15,
                                    font=("Helvetica", 14), fg="white")
-                self.label.configure(background='DeepSkyBlue2')
-                self.label.pack()
+            self.label.configure(background='DeepSkyBlue2')
+            self.label.pack()
 
 
         else:
@@ -71,7 +83,7 @@ class Window(Frame):
 
             self.label = Label(self, text= weersvoorspelling(),
                           bg="DeepSkyBlue2", height=2, padx=15, font=("Helvetica", 16), fg="white")
-            self.label.pack()
+            self.label.pack()'''
 
         threadUpdateTime = threading.Thread(target=self.reloadTweets)
         threadUpdateTime.start()
@@ -79,12 +91,13 @@ class Window(Frame):
     def reloadTweets(self):
         while True:
             print("threaadd")
-
             listText = self.twitterAPI_class.getTweets()
             if listText != []:
                 self.labelIntro['text'] = 'Meest recente tweets:'
+                textTotal = "\n"
                 for text in listText:
-                    self.label['text'] = text
+                    textTotal += text + "\n\n\n"
+                self.label['text'] = textTotal
             else:
                 # Huidige weersomstandigheden
                 self.labelIntro['text'] = "Huidige weersomstandigheden in Utrecht:"
