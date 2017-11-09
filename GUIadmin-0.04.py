@@ -4,20 +4,19 @@ from testjes import twitterAPI
 
 
 class Window(Frame):
-
-    def __init__(self, master = None):  #Creates main window
-        """ Creates main window. """
+    def __init__(self, master = None):
+        '''Creates main window.'''
         self.twitterAPI_class = twitterAPI.Twitter()
         Frame.__init__(self, master)
         self.master = master
         self.init_window()
 
+
     def init_window(self):
-        """ Initialize the layout of the GUI and calls read() and adjust texts."""
-        self.master.title('Admin GUI') #Gives a title to the window
+        '''Initialize the layout of the GUI and calls read() and adjust texts.'''
+        self.master.title('NS Consumenten zuil - Admin GUI') #Gives a title to the window
         self.pack(fill=BOTH, expand = 1)
         self.configure(bg = 'DeepSkyBlue2') #Changes the background colour
-
 
         #Creates the textframe where the tweets appear
         self.textLabel = Label(self, bg="DeepSkyBlue2", fg="white" ,text=" ", font=("Helvetica", 14))
@@ -33,8 +32,6 @@ class Window(Frame):
         #Creates the Reject button
         self.rejectButton = Button(self,font=("Helvetica",16), fg="red", background='white', text = 'Reject Tweet', command = self.reject)
         self.rejectButton.pack(side="right", expand=True, pady=0)
-
-
         self.read()
 
 
@@ -49,8 +46,8 @@ class Window(Frame):
             conn.close()
             self.showText()
         except:
-            print("er kan geen connectie met de database gemaakt worden")
             self.errorLabel['text'] = "Er kan geen connectie met de database gemaakt worden"
+
 
     def accept(self):
         '''Update twitter with text and delete tweet from database at position of id, and calls showtext() for new tweet.'''
@@ -62,7 +59,6 @@ class Window(Frame):
                 listText = self.twitterAPI_class.updateTwitter(self.tweetText)
 
             except:
-                print("er kan niet naar de twitterAPI gepost worden")
                 self.errorLabel['text'] = "Er kan niet naar de Twitter gepost worden"
 
             c.execute(
@@ -70,13 +66,11 @@ class Window(Frame):
             conn.commit()
             conn.close()
         except:
-            print("er kan geen connectie met de database gemaakt worden")
             self.errorLabel['text'] = "Er kan geen connectie met de database gemaakt worden"
-
-
 
         print("accepted")
         self.showText()
+
 
     def read(self):
         '''Read from database all tweets and put these in a dictionary. then calls showText().'''
@@ -101,8 +95,9 @@ class Window(Frame):
             self.acceptButton['state'] = DISABLED
             self.rejectButton['state'] = DISABLED
 
+
     def showText(self):
-        """call first tweet in dictionary and put in textLabel, delete tweet from dictionary."""
+        '''call first tweet in dictionary and put in textLabel, delete tweet from dictionary.'''
         if self.dict_tweetInfo != {}:
             for id, text in self.dict_tweetInfo.items():
                 self.tweetDBID = id
