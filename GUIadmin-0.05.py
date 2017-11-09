@@ -1,11 +1,11 @@
 from tkinter import *
 import sqlite3
-from testjes import twitterAPI
+import twitterAPI
 
 
 class Window(Frame):
     def __init__(self, master = None):
-        '''Creates main window.'''
+        '''Create main window.'''
         self.twitterAPI_class = twitterAPI.Twitter()
         Frame.__init__(self, master)
         self.master = master
@@ -13,7 +13,7 @@ class Window(Frame):
 
 
     def init_window(self):
-        '''Initialize the layout of the GUI and calls read() and adjust texts.'''
+        '''Initialize the layout of the GUI and call read() to adjust texts.'''
         self.master.title('NS Consumenten zuil - Admin') #Gives a title to the window
         self.pack(fill=BOTH, expand = 1)
         self.configure(bg = 'DeepSkyBlue2') #Changes the background colour
@@ -36,7 +36,7 @@ class Window(Frame):
 
 
     def reject(self):
-        '''Update database with status Reject, at position of id, and calls showtext() for new tweet.'''
+        '''Update database with status Reject at position of id; then call showtext() for new tweet.'''
         try:
             conn = sqlite3.connect("Database.db")
             c = conn.cursor()
@@ -50,7 +50,7 @@ class Window(Frame):
 
 
     def accept(self):
-        '''Update twitter with text and delete tweet from database at position of id, and calls showtext() for new tweet.'''
+        '''Update twitter with text and delete tweet from database at position of id; then call showtext() for new tweet.'''
         try:
             # eerst een connectie porberen te maken met de database
             conn = sqlite3.connect("Database.db")
@@ -73,7 +73,7 @@ class Window(Frame):
 
 
     def read(self):
-        '''Read from database all tweets and put these in a dictionary. then calls showText().'''
+        '''Read all tweets from database and put these in dict_tweetInfo; then call showText().'''
         self.dict_tweetInfo = {}
         try:
             conn = sqlite3.connect("Database.db")
@@ -98,7 +98,7 @@ class Window(Frame):
 
 
     def showText(self):
-        '''call first tweet in dictionary and put in textLabel, delete tweet from dictionary.'''
+        '''Call first tweet in dictionary and put in textLabel, delete tweet from dictionary.'''
         if self.dict_tweetInfo != {}:
             for id, text in self.dict_tweetInfo.items():
                 self.tweetDBID = id
