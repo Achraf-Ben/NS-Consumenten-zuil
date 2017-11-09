@@ -59,32 +59,6 @@ class Window(Frame):
         self.label.configure(background='DeepSkyBlue2' )
         self.label.pack(fill=BOTH)
 
-
-
-        '''listText = self.twitterAPI_class.getTweets()
-        if listText != []:
-            self.labelIntro = Label(self, text='Meest recente tweets:', height=2, padx=15, font=("Helvetica", 16),
-                               fg="white")
-            self.labelIntro.configure(background='DeepSkyBlue2')
-            self.labelIntro.pack()
-
-            self.label = Label(self, text=" ", height=2, padx=15,
-                                   font=("Helvetica", 14), fg="white")
-            self.label.configure(background='DeepSkyBlue2')
-            self.label.pack()
-
-
-        else:
-            # Huidige weersomstandigheden
-            self.labelIntro = Label(self, text='"Huidige weersomstandigheden in Utrecht:', height=2, padx=15, font=("Helvetica", 16),
-                                    fg="white")
-            self.labelIntro.configure(background='DeepSkyBlue2')
-            self.labelIntro.pack()
-
-            self.label = Label(self, text= weersvoorspelling(),
-                          bg="DeepSkyBlue2", height=2, padx=15, font=("Helvetica", 16), fg="white")
-            self.label.pack()'''
-
         threadUpdateTime = threading.Thread(target=self.reloadTweets)
         threadUpdateTime.start()
 
