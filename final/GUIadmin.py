@@ -52,7 +52,7 @@ class Window(Frame):
     def accept(self):
         '''Update twitter with text and delete tweet from database at position of id; then call showtext() for new tweet.'''
         try:
-            # eerst een connectie porberen te maken met de database
+            # eerst een connectie proberen te maken met de database
             conn = sqlite3.connect("Database.db")
             c = conn.cursor()
             try:
