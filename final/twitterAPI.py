@@ -3,11 +3,11 @@ import datetime
 
 class Twitter():
 
-    accessToken = "927464600936828929-g8R4LsDaKbcXSxqW59khKZlTlJ1QM5T"
-    accessTokenSecret = "iQVnaaMIkAdkbK2iZPaqeXiPiG8BJsN3FUisT5LhZ8aCy"
-    consumerKey = "bnsvVR2jSVxSZXzLwL7mQHdhJ"
-    ownerID = "27464600936828929"
-    consumerKeySecret = "0S5AKn1EcS33tivGoZTTlu4kP02C7n9PG2uZ9dlTieqy7H5ybP"
+    accessToken = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    accessTokenSecret = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    consumerKey = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    ownerID = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    consumerKeySecret = "XXXXXXXXXXXXXXXXXXXXXXXX"
 
     auth = tweepy.OAuthHandler(consumerKey, consumerKeySecret)
     auth.set_access_token(accessToken, accessTokenSecret)
