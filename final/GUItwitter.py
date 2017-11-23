@@ -10,7 +10,7 @@ import threading
 
 def weersvoorspelling():
     '''Return weather forecast using the Darsky API.'''
-    api_key = "dca7849ad2985d67e63bdce010c191ee"
+    api_key = "XXXXXXXXXXXXXXXXXXXXXXXX"
     # Utrecht
     latitude = 52.0884851
     longitude = 5.1180588
