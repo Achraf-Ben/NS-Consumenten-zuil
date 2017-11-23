@@ -46,6 +46,17 @@ cd final
 python3 GUIadmin.py
 python3 GUIconsumenten.py
 python3 GUItwitter.py
+
+Pas de volgende regels aan in twitterAPI.py en GUItwitter.pi:
+
+    6 accessToken = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    7 accessTokenSecret = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    8 consumerKey = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    9 ownerID = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    10 consumerKeySecret = "XXXXXXXXXXXXXXXXXXXXXXXX"
+    
+    
+    13  api_key = "XXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
 Na het starten van de 3 GUI's is het mogelijk om in GUIconsumenten een (Twitter) bericht in te voeren. 
