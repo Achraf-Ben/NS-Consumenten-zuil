@@ -47,7 +47,7 @@ python3 GUIadmin.py
 python3 GUIconsumenten.py
 python3 GUItwitter.py
 
-Pas de volgende regels aan in twitterAPI.py en GUItwitter.pi:
+Pas de volgende regels aan in twitterAPI.py en GUItwitter.py:
 
     6 accessToken = "XXXXXXXXXXXXXXXXXXXXXXXX"
     7 accessTokenSecret = "XXXXXXXXXXXXXXXXXXXXXXXX"
